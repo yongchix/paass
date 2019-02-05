@@ -18,6 +18,7 @@ set(PROCESSOR_SOURCES
         LogicProcessor.cpp
         McpProcessor.cpp
         NeutronScintProcessor.cpp
+        NsheProcessor.cpp
         PositionProcessor.cpp
         PspmtProcessor.cpp
         TeenyVandleProcessor.cpp

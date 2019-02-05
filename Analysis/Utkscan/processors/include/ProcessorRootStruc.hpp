@@ -84,6 +84,18 @@ namespace processor_struct {
         TString tag = "";
     };
     static const PSPMT  PSPMT_DEFAULT_STRUCT;
+
+    struct DSSD { 
+        int x = -999;
+        int y = -999;
+        double Energy_front = -999;
+        double Energy_back = -999;
+        double Time = -999;
+        std::vector<unsigned int> Trace_Front;
+        std::vector<unsigned int> Trace_Back;
+        bool pile_up = false;
+    };
+    static const DSSD DSSD_DEFAULT_STRUCT;
 }    
 
 class PixTreeEvent : public TObject
@@ -101,6 +113,7 @@ public:
         fileName = obj.fileName;
         clover_vec_ = obj.clover_vec_;
         doublebeta_vec_ = obj.doublebeta_vec_;
+        dssd_vec_ = obj.dssd_vec_;
         gamma_scint_vec_ = obj.gamma_scint_vec_;
         logic_vec_ = obj.logic_vec_;
         pspmt_vec_ = obj.pspmt_vec_;
@@ -118,6 +131,7 @@ public:
         fileName = "";
         clover_vec_.clear();
         doublebeta_vec_.clear();
+        dssd_vec_.clear();
         gamma_scint_vec_.clear();
         logic_vec_.clear();
         pspmt_vec_.clear();
@@ -132,6 +146,7 @@ public:
     std::string fileName = "";
     std::vector<processor_struct::CLOVERS> clover_vec_;
     std::vector<processor_struct::DOUBLEBETA> doublebeta_vec_;
+    std::vector<processor_struct::DSSD> dssd_vec_;
     std::vector<processor_struct::GAMMASCINT> gamma_scint_vec_;
     std::vector<processor_struct::LOGIC> logic_vec_;
     std::vector<processor_struct::PSPMT> pspmt_vec_;

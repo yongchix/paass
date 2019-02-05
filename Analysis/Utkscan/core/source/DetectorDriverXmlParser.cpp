@@ -39,6 +39,7 @@
 #include "LogicProcessor.hpp"
 #include "McpProcessor.hpp"
 #include "NeutronScintProcessor.hpp"
+#include "NsheProcessor.hpp"
 #include "PositionProcessor.hpp"
 #include "PspmtProcessor.hpp"
 #include "TeenyVandleProcessor.hpp"
@@ -131,6 +132,14 @@ vector<EventProcessor *> DetectorDriverXmlParser::ParseProcessors(const pugi::xm
             vecProcess.push_back(new DoubleBetaProcessor());
         } else if (name == "DssdProcessor") {
             vecProcess.push_back(new DssdProcessor());
+        } else if (name == "ExtTSSenderProcessor") {
+            vecProcess.push_back(new ExtTSSenderProcessor(
+                    processor.attribute("type").as_string(""),
+                    processor.attribute("host").as_string("localhost"),
+                    processor.attribute("slot").as_int(0),
+                    processor.attribute("channel").as_int(0),
+                    processor.attribute("port").as_int(12345),
+                    processor.attribute("buffSize").as_uint(64)));
         }else if (name == "GammaScintProcessor") {
             std::map<std::string,std::string> GScintArgs;
             std::string defaultSubEvtWin = "0.50e-6";
@@ -182,6 +191,17 @@ vector<EventProcessor *> DetectorDriverXmlParser::ParseProcessors(const pugi::xm
             vecProcess.push_back(new McpProcessor());
         } else if (name == "NeutronScintProcessor") {
             vecProcess.push_back(new NeutronScintProcessor());
+        }else if (name == "NsheProcessor") {
+            vecProcess.push_back(new NsheProcessor(
+                    processor.attribute("timeWindow").as_double(1e-6),
+                    processor.attribute("tofWindow").as_double(1e-7),
+                    processor.attribute("deltaEnergy").as_double(3000),
+                    processor.attribute("highEnergyCut").as_double(15000),
+                    processor.attribute("lowEnergyCut").as_double(8000),
+                    processor.attribute("zero_suppress").as_double(8000),
+                    processor.attribute("fissionEnergyCut").as_double(100000),
+                    processor.attribute("numBackStrips").as_int(64),
+                    processor.attribute("numFrontStrips").as_int(64)));
         } else if (name == "PositionProcessor") {
             vecProcess.push_back(new PositionProcessor());
         } else if (name == "PspmtProcessor") {
@@ -211,14 +231,6 @@ vector<EventProcessor *> DetectorDriverXmlParser::ParseProcessors(const pugi::xm
             vecProcess.push_back(new E11027Processor());
         } else if (name == "TemplateExpProcessor") {
             vecProcess.push_back(new TemplateExpProcessor());
-        } else if (name == "ExtTSSenderProcessor") {
-            vecProcess.push_back(new ExtTSSenderProcessor(
-                    processor.attribute("type").as_string(""),
-                    processor.attribute("host").as_string("localhost"),
-                    processor.attribute("slot").as_int(0),
-                    processor.attribute("channel").as_int(0),
-                    processor.attribute("port").as_int(12345),
-                    processor.attribute("buffSize").as_uint(64)));
         }
 #ifdef useroot //Certain processors REQUIRE ROOT to actually work
         else if (name == "Anl1471Processor") {
