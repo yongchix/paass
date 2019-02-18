@@ -90,6 +90,8 @@ namespace processor_struct {
         int y = -999;
         double Energy_front = -999;
         double Energy_back = -999;
+        double Tof = -999;
+        double Veto = -999;
         double Time = -999;
         std::vector<unsigned int> Trace_Front;
         std::vector<unsigned int> Trace_Back;
