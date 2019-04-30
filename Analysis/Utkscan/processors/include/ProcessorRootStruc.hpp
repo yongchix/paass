@@ -91,6 +91,8 @@ namespace processor_struct {
         double Energy_front = -999;
         double Energy_back = -999;
         double Tof = -999;
+        int QDC1 = - 999;
+        int QDC2 = -999;
         double Veto = -999;
         double Time = -999;
         std::vector<unsigned int> Trace_Front;
