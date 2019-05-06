@@ -95,10 +95,14 @@ namespace processor_struct {
         int QDC2 = -999;
         double Veto = -999;
         double Time = -999;
+        double Side = -999;
         std::vector<unsigned int> Trace_Front;
         std::vector<unsigned int> Trace_Back;
         std::vector<unsigned int> Trace_TOF1;
         std::vector<unsigned int> Trace_TOF2;
+        std::vector<unsigned int> Trace_Side;
+        std::vector<unsigned int> Trace_Veto;
+
         bool pile_up = false;
     };
     static const DSSD DSSD_DEFAULT_STRUCT;
