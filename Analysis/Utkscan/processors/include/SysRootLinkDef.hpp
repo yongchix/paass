@@ -22,6 +22,9 @@
 #pragma link C++ struct processor_struct::PSPMT+;
 #pragma link C++ class std::vector<processor_struct::PSPMT>+;
 
+#pragma link C++ struct processor_struct::YAP+;
+#pragma link C++ class std::vector<processor_struct::YAP>+;
+
 #pragma link C++ struct processor_struct::ROOTDEV+;
 #pragma link C++ class std::vector<processor_struct::ROOTDEV>+;
 

@@ -77,8 +77,23 @@ namespace processor_struct {
 
 	// by YX; 06/05/2019
 	// for YAP detector used in JAEA 2015
+	// this is the YAP structure
+	// to be stored in the output tree
 	struct YAP {
 		double time = -999; 
+		double dyEnergy = -999; 
+		double anEnergyTotal = -999; 
+		std::vector<unsigned int> anEnergy = {}; 
+		// QDC
+		unsigned int dyQDC = -999; 
+		unsigned int anQDCTotal = -999; 
+		std::vector<unsigned int> anQDC = {}; 
+		// traces
+		std::vector<unsigned int> dyTrace = {}; 
+		std::vector<unsigned int> anTrace1 = {}; 
+		std::vector<unsigned int> anTrace2 = {}; 
+		std::vector<unsigned int> anTrace3 = {}; 
+		std::vector<unsigned int> anTrace4 = {}; 
 	}; 
 	static const YAP YAP_DEFAULT_STRUCT; 
 
