@@ -26,6 +26,8 @@
 #include "TraceAnalyzer.hpp"
 #include "TreeCorrelator.hpp"
 #include "ProcessorRootStruc.hpp"
+#include "YapProcessor.hpp"
+
 
 using namespace std;
 using namespace dammIds::raw;
@@ -33,9 +35,9 @@ using namespace dammIds::raw;
 DetectorDriver *DetectorDriver::instance = NULL;
 
 DetectorDriver *DetectorDriver::get() {
-    if (!instance)
-        instance = new DetectorDriver();
-    return instance;
+	if (!instance)
+		instance = new DetectorDriver();
+	return instance;
 }
 
 DetectorDriver::DetectorDriver() : histo(OFFSET, RANGE, "DetectorDriver") {
@@ -113,11 +115,14 @@ DetectorDriver::DetectorDriver() : histo(OFFSET, RANGE, "DetectorDriver") {
 
             } else if ((*itp) == "PspmtProcessor"){
                 auto PSPMTheader = ((PspmtProcessor *) GetProcessor("PspmtProcessor"))->GetPSPMTHeader();
-                TNamed VDType("VDType",PSPMTheader.first);
-                VDType.Write();
-                TNamed Thresh("SoftThresh",PSPMTheader.second);
-                Thresh.Write();
-            } else if ((*itp) == "LogicProcessor") {
+				TNamed VDType("VDType",PSPMTheader.first);
+				VDType.Write();
+				TNamed Thresh("SoftThresh",PSPMTheader.second);
+				Thresh.Write();
+			} else if ((*itp) == "YapProcessor") {
+				// left blank intended				
+			} 
+			else if ((*itp) == "LogicProcessor") {
                 fillLogic_ = true;
             } else{
                 continue;

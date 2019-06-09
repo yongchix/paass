@@ -24,6 +24,7 @@ set(PROCESSOR_SOURCES
         TeenyVandleProcessor.cpp
         TemplateProcessor.cpp
         VandleProcessor.cpp
+		YapProcessor.cpp
         )
 
 if (PAASS_USE_ROOT)

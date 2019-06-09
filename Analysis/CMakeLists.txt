@@ -1,5 +1,5 @@
 #@authors K. Smith, S. V. Paulauskas, C. R. Thornsberry
-option(PAASS_USE_HRIBF "Use HRIBF library for scan base." OFF)
+option(PAASS_USE_HRIBF "Use HRIBF library for scan base." ON)
 CMAKE_DEPENDENT_OPTION(PAASS_USE_GSL "Compile with GSL" ON
         "PAASS_BUILD_UTKSCAN" OFF)
 mark_as_advanced(PAASS_USE_GSL)

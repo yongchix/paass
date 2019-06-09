@@ -46,11 +46,15 @@
 #include "TeenyVandleProcessor.hpp"
 #include "TemplateProcessor.hpp"
 #include "VandleProcessor.hpp"
+// by YX; 06/05/2019
+#include "YapProcessor.hpp"
 
 //These headers are for handling experiment specific processing.
 #include "E11027Processor.hpp"
 #include "TemplateExpProcessor.hpp"
 #include "VandleOrnl2012Processor.hpp"
+// by YX; 06/05/2019
+#include "JAEA2015Processor.hpp"
 
 #ifdef useroot //Some processors REQUIRE ROOT to function
 #include "Anl1471Processor.hpp"
@@ -209,7 +213,9 @@ vector<EventProcessor *> DetectorDriverXmlParser::ParseProcessors(const pugi::xm
                     processor.attribute("front_threshold").as_double(50.0),
                     processor.attribute("rotation").as_double(0.0)
             ));
-        } else if (name =="RootDevProcessor"){
+        } else if (name == "YapProcessor") {
+			vecProcess.push_back(new YapProcessor()); 
+		} else if (name =="RootDevProcessor"){
             vecProcess.push_back(new RootDevProcessor());
         }else if (name == "TeenyVandleProcessor") {
             vecProcess.push_back(new TeenyVandleProcessor());
@@ -233,7 +239,9 @@ vector<EventProcessor *> DetectorDriverXmlParser::ParseProcessors(const pugi::xm
             vecProcess.push_back(new TwoChanTimingProcessor());
         } else if (name == "VandleOrnl2012Processor") {
             vecProcess.push_back(new VandleOrnl2012Processor());
-        } else if (name == "RootProcessor") { //Must be the last for silly reasons.
+        } else if (name == "JAEA2015Processor") {
+			vecProcess.push_back(new JAEA2015Processor()); 
+		} else if (name == "RootProcessor") { //Must be the last for silly reasons.
             vecProcess.push_back(new RootProcessor("tree.root", "tree"));
         }
 #endif

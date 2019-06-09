@@ -9,111 +9,118 @@
 
 namespace processor_struct {
 
-struct CLOVERS {
-    double energy = -999;
-    double rawEnergy = -999;
-    double time = -999;
-    int detNum = -999;
-    int cloverNum = -999;
-};
+	struct CLOVERS {
+		double energy = -999;
+		double rawEnergy = -999;
+		double time = -999;
+		int detNum = -999;
+		int cloverNum = -999;
+	};
 
-static const CLOVERS CLOVERS_DEFAULT_STRUCT;
+	static const CLOVERS CLOVERS_DEFAULT_STRUCT;
 
-struct DOUBLEBETA {
-    int detNum = -999;
-    double energy = -999;
-    double rawEnergy = -999;
-    double timeAvg = -999;
-    double timeDiff = -999;
-    double timeL = -999;
-    double timeR = -999;
-    double barQdc = -999;
-    double tMaxValL = -999;
-    double tMaxValR = -999;
-    bool isLowResBeta = false;
-    bool isHighResBeta = false;
-};
-static const DOUBLEBETA DOUBLEBETA_DEFAULT_STRUCT;
+	struct DOUBLEBETA {
+		int detNum = -999;
+		double energy = -999;
+		double rawEnergy = -999;
+		double timeAvg = -999;
+		double timeDiff = -999;
+		double timeL = -999;
+		double timeR = -999;
+		double barQdc = -999;
+		double tMaxValL = -999;
+		double tMaxValR = -999;
+		bool isLowResBeta = false;
+		bool isHighResBeta = false;
+	};
+	static const DOUBLEBETA DOUBLEBETA_DEFAULT_STRUCT;
 
-struct GAMMASCINT {
-    double energy = -999;
-    double rawEnergy = -999;
-    bool isDynodeOut = false;
-    int detNum = -999;
-    double time = -999;
-    TString group = "";
-    TString subtype = "";
-};
-static const GAMMASCINT GAMMASCINT_DEFAULT_STRUCT;
+	struct GAMMASCINT {
+		double energy = -999;
+		double rawEnergy = -999;
+		bool isDynodeOut = false;
+		int detNum = -999;
+		double time = -999;
+		TString group = "";
+		TString subtype = "";
+	};
+	static const GAMMASCINT GAMMASCINT_DEFAULT_STRUCT;
 
-struct LOGIC {
-    bool tapeCycleStatus = false;
-    bool beamStatus = false;
-    bool tapeMoving = false;
+	struct LOGIC {
+		bool tapeCycleStatus = false;
+		bool beamStatus = false;
+		bool tapeMoving = false;
 
-    double lastTapeCycleStartTime = -999;
-    double lastBeamOnTime = -999;
-    double lastBeamOffTime = -999;
-    double lastTapeMoveStartTime = -999;
-    double lastProtonPulseTime = -999;
-    double lastSuperCycleTime = -999;
+		double lastTapeCycleStartTime = -999;
+		double lastBeamOnTime = -999;
+		double lastBeamOffTime = -999;
+		double lastTapeMoveStartTime = -999;
+		double lastProtonPulseTime = -999;
+		double lastSuperCycleTime = -999;
 
-    int cycleNum = -999;
-};
-static const LOGIC LOGIC_DEFAULT_STRUCT;
+		int cycleNum = -999;
+	};
+	static const LOGIC LOGIC_DEFAULT_STRUCT;
 
-struct PSPMT {
-    double energy = -999;
-    double time = -999;
-    TString subtype = "";
-    TString tag = "";
-    double traceMaxVal = -999;
-    int traceMaxPos = -999;
-    double preBaseAvg = -999;
-    double postBaseAvg = -999;
-    bool invalidTrace = false;
-};
-static const PSPMT PSPMT_DEFAULT_STRUCT;
+	struct PSPMT {
+		double energy = -999;
+		double time = -999;
+		TString subtype = "";
+		TString tag = "";
+		double traceMaxVal = -999;
+		int traceMaxPos = -999;
+		double preBaseAvg = -999;
+		double postBaseAvg = -999;
+		bool invalidTrace = false;
+	};
+	static const PSPMT PSPMT_DEFAULT_STRUCT;
 
-struct ROOTDEV {
-    double energy = -999;
-    double rawEnergy = -999;
-    double timeSansCfd = -999;
-    double time = -999;
-    int detNum = -999;   //the instance number of RD in the xml Map
-    int modNum = -999;   // the physical module number
-    int chanNum = -999;  // the physical channel number
-    TString subtype = "";
-    TString group = "";
-    bool pileup = false;                     //Did pixie detect pileup in the event
-    bool saturation = false;                 //Did the trace go out of the ADC range
-    std::vector<unsigned int> trace = {};    //The trace if present
-    double tqdc = -999;                      //QDC from trace (requires the Waveform Analyzer)
-    int maxPos = -999;                       //Max location in the trace  (requires the Waveform Analyzer)
-    double maxVal = -999;                    //Max value in the trace (requires the Waveform Analyzer)
-    double highResTime = -999;               //High Resolution Time derived from the trace fitting (requires the Waveform and Fitting Analyzer)
-    std::vector<unsigned int> qdcSums = {};  //output the onboard qdc sums if present
-};
-static const ROOTDEV ROOTDEV_DEFAULT_STRUCT;
+	// by YX; 06/05/2019
+	// for YAP detector used in JAEA 2015
+	struct YAP {
+		double time = -999; 
+	}; 
+	static const YAP YAP_DEFAULT_STRUCT; 
 
-struct VANDLES {
-    double tof = 0;
-    double corTof = 0;
-    double qdcPos = 0;
-    double qdc = 0;
-    int barNum = 0;
-    std::string barType = "";
-    double tdiff = -999;
-    unsigned int sNum = 0;  //start detector number
-    int vMulti = 0;
-    double sTime = -999;
-    double sQdc = -999;
-};
-static const VANDLES VANDLES_DEFAULT_STRUCT;
+	struct ROOTDEV {
+		double energy = -999;
+		double rawEnergy = -999;
+		double timeSansCfd = -999;
+		double time = -999;
+		int detNum = -999;   //the instance number of RD in the xml Map
+		int modNum = -999;   // the physical module number
+		int chanNum = -999;  // the physical channel number
+		TString subtype = "";
+		TString group = "";
+		bool pileup = false;                     //Did pixie detect pileup in the event
+		bool saturation = false;                 //Did the trace go out of the ADC range
+		std::vector<unsigned int> trace = {};    //The trace if present
+		double tqdc = -999;                      //QDC from trace (requires the Waveform Analyzer)
+		int maxPos = -999;                       //Max location in the trace  (requires the Waveform Analyzer)
+		double maxVal = -999;                    //Max value in the trace (requires the Waveform Analyzer)
+		double highResTime = -999;               //High Resolution Time derived from the trace fitting (requires the Waveform and Fitting Analyzer)
+		std::vector<unsigned int> qdcSums = {};  //output the onboard qdc sums if present
+	};
+	static const ROOTDEV ROOTDEV_DEFAULT_STRUCT;
+
+	struct VANDLES {
+		double tof = 0;
+		double corTof = 0;
+		double qdcPos = 0;
+		double qdc = 0;
+		int barNum = 0;
+		std::string barType = "";
+		double tdiff = -999;
+		unsigned int sNum = 0;  //start detector number
+		int vMulti = 0;
+		double sTime = -999;
+		double sQdc = -999;
+	};
+	static const VANDLES VANDLES_DEFAULT_STRUCT;
 }  // namespace processor_struct
 
 class PixTreeEvent : public TObject {
-   public:
+public:
     PixTreeEvent() {}
 
     /* copy constructor */
@@ -129,6 +136,8 @@ class PixTreeEvent : public TObject {
         pspmt_vec_ = obj.pspmt_vec_;
         root_dev_vec_ = obj.root_dev_vec_;
         vandle_vec_ = obj.vandle_vec_;
+		// by YX; 06/05/2019
+		yap_vec_ = obj.yap_vec_; 
     }
 
     virtual ~PixTreeEvent() {}
@@ -146,6 +155,8 @@ class PixTreeEvent : public TObject {
         pspmt_vec_.clear();
         root_dev_vec_.clear();
         vandle_vec_.clear();
+		// by YX; 06/05/2019
+		yap_vec_.clear(); 
     }
 
     /* data structures to be filled in the ROOT TTree */
@@ -160,6 +171,8 @@ class PixTreeEvent : public TObject {
     std::vector<processor_struct::PSPMT> pspmt_vec_;
     std::vector<processor_struct::ROOTDEV> root_dev_vec_;
     std::vector<processor_struct::VANDLES> vandle_vec_;
+	// by YX; 06/05/2019
+	std::vector<processor_struct::YAP> yap_vec_; 
 
     ClassDef(PixTreeEvent, 1)
 };
