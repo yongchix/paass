@@ -41,6 +41,7 @@ public:
 private:
     double a_; //!< a variable global to the class
     std::vector<ChanEvent *> evts_; //!< vector of events for people to get
+	processor_struct::YAP YAPstruct; 
 };
 
 #endif // __YAPPROCESSOR_HPP__

@@ -11,6 +11,10 @@
 #include <vector>
 
 #include <cmath>
+#include <iomanip>
+#include <numeric>
+
+using namespace std; 
 
 /// @brief This defines a more extensible implementation of a digitized trace.
 /// The class is derived from a vector of unsigned integers. This is the basic
@@ -203,6 +207,38 @@ private:
     std::vector<double> esums_; ///< The Energy sums calculated from the trace
 
     std::vector<unsigned int> triggerPositions_; ///< Trigger positions in trc.
+
+public:
+	// these are the funcitons defined by YX
+	// date: 06/09/2019
+	// this is a copy from previous 
+	// scan code for 108Xe
+
+	double DoBaseline(unsigned int lo, unsigned int numBins) {
+		// lo = 0, numBins = 20 
+		// is preferred
+		unsigned int hi = lo+numBins;
+ 
+		double sum = accumulate(begin() + lo, begin() + hi, 0.0);
+		double mean = sum / numBins;
+
+		return(mean);
+	}
+
+	double DoQDCSimple(unsigned int lo,unsigned int hi){
+		double baseline = DoBaseline(0, 20);
+		//  double baseline = GetValue("baseline");                                                                                    
+		double qdc=0;
+		for(unsigned int i=lo;i<=hi;i++){
+			if(hi >= size()) break;
+			qdc += at(i)-baseline;
+		}
+
+		return (qdc);
+	}
+
+
+
 };
 
 #endif // __TRACE_H_

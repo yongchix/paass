@@ -1,0 +1,24 @@
+Analysis/ScanLibraries/include/XiaData.hpp:    double GetTimeSansCfd() const { return timeSansCfd_; }
+Analysis/ScanLibraries/source/XiaListModeDataDecoder.cpp:    //Moved here so we can use the multiplier to adjust the clock tick units. So GetTime() returns the ADC ticks and GetTimeSansCfd() returns Filter Ticks
+Analysis/ScanLibraries/source/XiaListModeDataDecoder.cpp:    //(For 250MHZ) This way GetTime() always returns 4ns clock ticks, and GetTimeSansCfd() returns the normal 8ns ticks  
+Analysis/Utkscan/processors/source/GammaScintProcessor.cpp:        double currentTime_ = GSEvents_.back()->GetTimeSansCfd() * Globals::get()->GetClockInSeconds() * 1.e9;
+Analysis/Utkscan/processors/source/GammaScintProcessor.cpp:        double Gtime = (*it)->GetTimeSansCfd() * Globals::get()->GetClockInSeconds() * 1.e9;
+Analysis/Utkscan/processors/source/GammaScintProcessor.cpp:    double abTdiff = abs((*it)->GetTimeSansCfd()-GetAddbackPara(subType,"refTime"));
+Analysis/Utkscan/processors/source/GammaScintProcessor.cpp:        GetAddbackStruct(subType)->ftime = (*it)->GetTimeSansCfd();
+Analysis/Utkscan/processors/source/GammaScintProcessor.cpp:        GetAddbackStruct(subType)->time = (*it)->GetTimeSansCfd();
+Analysis/Utkscan/processors/source/GammaScintProcessor.cpp:        SetAddbackRefTime(subType, (*it)->GetTimeSansCfd());
+Analysis/Utkscan/processors/source/CloverProcessor.cpp:            double gTime = itC->GetTimeSansCfd();
+Analysis/Utkscan/processors/source/CloverProcessor.cpp:            Cstruct.time = itC->GetTimeSansCfd() * Globals::get()->GetClockInSeconds() * 1e9; //store ns
+Analysis/Utkscan/processors/source/RootDevProcessor.cpp:            RDstruct.timeSansCfd = (*it)->GetTimeSansCfd() * Globals::get()->GetClockInSeconds((*it)->GetChanID().GetModFreq()) * 1e9;
+Analysis/Utkscan/processors/source/RootDevProcessor.cpp:            RDstruct.timeSansCfd = (*it)->GetTimeSansCfd() * Globals::get()->GetClockInSeconds() * 1e9;
+Analysis/Utkscan/processors/source/CloverFragProcessor.cpp:            Cstruct.time = (*itClover)->GetTimeSansCfd() * Globals::get()->GetClockInSeconds() * 1e9; //store ns
+Analysis/Utkscan/processors/source/VandleProcessor.cpp:                    vandles.sTime = start.GetTimeSansCfd();
+Analysis/Utkscan/processors/source/LogicProcessor.cpp:        double time = chan->GetTimeSansCfd();
+Analysis/Utkscan/processors/source/YapProcessor.cpp:		unsigned int time = it.GetTimeSansCfd()*Globals::get()->GetClockInSeconds(it.GetChanID().GetModFreq())*1e9; 
+Analysis/Utkscan/processors/source/PspmtProcessor.cpp:    PSstruct.time = chan_event.GetTimeSansCfd() * Globals::get()->GetClockInSeconds(chan_event.GetChanID().GetModFreq()) * 1e9;  //store ns
+Analysis/Utkscan/processors/source/DoubleBetaProcessor.cpp:            DBstruc.timeL = (*it).second.GetLeftSide().GetTimeSansCfd() * Globals::get()->GetClockInSeconds() * 1e9; //store ns;
+Analysis/Utkscan/processors/source/DoubleBetaProcessor.cpp:            DBstruc.timeR = (*it).second.GetRightSide().GetTimeSansCfd() * Globals::get()->GetClockInSeconds() * 1e9; //store ns;
+Analysis/Utkscan/core/source/DetectorDriver.cpp:                eventFirstTime_ = (*it)->GetTimeSansCfd(); //sets the time of the first det event in the pixie event
+Analysis/Utkscan/core/source/DetectorDriver.cpp:            firstEventTime_ = rawev.GetEventList().front()->GetTimeSansCfd();
+Analysis/Utkscan/core/source/DetectorDriver.cpp:                chan->GetTimeSansCfd() * Globals::get()->GetFilterClockInSeconds()) * 1e9);
+install/include/XiaData.hpp:    double GetTimeSansCfd() const { return timeSansCfd_; }

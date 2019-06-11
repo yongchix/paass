@@ -420,7 +420,7 @@ void PspmtProcessor::FillPSPMTStruc(const ChanEvent &chan_event) {
     PSstruct.time = chan_event.GetTimeSansCfd() * Globals::get()->GetClockInSeconds(chan_event.GetChanID().GetModFreq()) * 1e9;  //store ns
     PSstruct.subtype = chan_event.GetChanID().GetSubtype();
     PSstruct.tag = chan_event.GetChanID().GetGroup();
-    pixie_tree_event_->pspmt_vec_.emplace_back(PSstruct);
+	//    pixie_tree_event_->pspmt_vec_.emplace_back(PSstruct);
     PSstruct = processor_struct::PSPMT_DEFAULT_STRUCT;
 
     return;

@@ -69,7 +69,7 @@ bool DoubleBetaProcessor::PreProcess(RawEvent &event) {
             DBstruc.detNum = (*it).first;
             DBstruc.energy = (*it).second.second;
             DBstruc.timeAvg = (*it).second.first * Globals::get()->GetAdcClockInSeconds() *1.0e9; //record time in ns, LRTBarMap uses the Walkcorrected Time which uses GetTime()
-            pixie_tree_event_->doublebeta_vec_.emplace_back(DBstruc);
+			//            pixie_tree_event_->doublebeta_vec_.emplace_back(DBstruc);
             DBstruc = processor_struct::DOUBLEBETA_DEFAULT_STRUCT;
         }
     }
@@ -92,7 +92,7 @@ bool DoubleBetaProcessor::PreProcess(RawEvent &event) {
             DBstruc.barQdc = (*it).second.GetQdc();
             DBstruc.tMaxValR = (*it).second.GetRightSide().GetMaximumValue();
             DBstruc.tMaxValL = (*it).second.GetLeftSide().GetMaximumValue();
-            pixie_tree_event_->doublebeta_vec_.emplace_back(DBstruc);
+			//            pixie_tree_event_->doublebeta_vec_.emplace_back(DBstruc);
             DBstruc = processor_struct::DOUBLEBETA_DEFAULT_STRUCT;
         }
 

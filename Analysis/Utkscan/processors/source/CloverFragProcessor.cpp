@@ -162,7 +162,7 @@ bool CloverFragProcessor::Process(RawEvent &event) {
             Cstruct.time = (*itClover)->GetTimeSansCfd() * Globals::get()->GetClockInSeconds() * 1e9; //store ns
             Cstruct.detNum = (*itClover)->GetChanID().GetLocation();
             Cstruct.cloverNum = cloverNum;
-            pixie_tree_event_->clover_vec_.emplace_back(Cstruct);
+			//            pixie_tree_event_->clover_vec_.emplace_back(Cstruct);
             Cstruct = processor_struct::CLOVERS_DEFAULT_STRUCT; //reset to initalized values (see ProcessorRootStruc.hpp
         }
     }

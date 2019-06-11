@@ -80,22 +80,60 @@ namespace processor_struct {
 	// this is the YAP structure
 	// to be stored in the output tree
 	struct YAP {
+		// temp. flags
+		bool isIon = false; 
+		bool isGoodYap = false; 
+		//
 		double time = -999; 
 		double dyEnergy = -999; 
 		double anEnergyTotal = -999; 
-		std::vector<unsigned int> anEnergy = {}; 
+		//		std::vector<unsigned int> anEnergy = {}; 
 		// QDC
 		unsigned int dyQDC = -999; 
 		unsigned int anQDCTotal = -999; 
-		std::vector<unsigned int> anQDC = {}; 
+		//		std::vector<unsigned int> anQDC = {}; 
 		// traces
 		std::vector<unsigned int> dyTrace = {}; 
+		std::vector<unsigned int> anTrace0 = {}; 
 		std::vector<unsigned int> anTrace1 = {}; 
 		std::vector<unsigned int> anTrace2 = {}; 
 		std::vector<unsigned int> anTrace3 = {}; 
-		std::vector<unsigned int> anTrace4 = {}; 
+		// position calculated
+		// with QDC
+		unsigned int posX = -999; 
+		unsigned int posY = -999; 
+		double posRawX = -999; 
+		double posRawY = -999; 
 	}; 
 	static const YAP YAP_DEFAULT_STRUCT; 
+
+	// by YX; 06/09/2019
+	// for correlation only
+	// to be saved to output tree PixTree
+	struct JAEA2015 {
+		// ion-decay correlation
+		// correlation flag
+		unsigned int corrFlag = -999; 
+		// time diff. 
+		double timeDiff = -999; 
+		// ion
+		double ionTime = -999; 
+		unsigned int ionPosX = -999; 
+		unsigned int ionPosY = -999; 
+		double ionDyEnergy = -999; 
+		double ionAnEnergyTotal = -999; 
+		unsigned int ionDyQDC = -999; 
+		unsigned int ionAnQDCTotal = -999; 
+		// decay
+		double decayTime = -999; 
+		unsigned int decayPosX = -999; 
+		unsigned int decayPosY = -999; 
+		double decayDyEnergy = -999; 
+		double decayAnEnergyTotal = -999; 
+		unsigned int decayDyQDC = -999; 
+		unsigned int decayAnQDCTotal = -999; 		
+	}; 
+	static const JAEA2015 JAEA2015_DEFAULT_STRUCT; 
 
 	struct ROOTDEV {
 		double energy = -999;
@@ -144,15 +182,17 @@ public:
         externalTS2 = obj.externalTS2;
         eventNum = obj.eventNum;
         fileName = obj.fileName;
-        clover_vec_ = obj.clover_vec_;
-        doublebeta_vec_ = obj.doublebeta_vec_;
+		//        clover_vec_ = obj.clover_vec_;
+		//        doublebeta_vec_ = obj.doublebeta_vec_;
         gamma_scint_vec_ = obj.gamma_scint_vec_;
         logic_vec_ = obj.logic_vec_;
-        pspmt_vec_ = obj.pspmt_vec_;
-        root_dev_vec_ = obj.root_dev_vec_;
-        vandle_vec_ = obj.vandle_vec_;
+		//        pspmt_vec_ = obj.pspmt_vec_;
+		//        root_dev_vec_ = obj.root_dev_vec_;
+		//        vandle_vec_ = obj.vandle_vec_;
 		// by YX; 06/05/2019
 		yap_vec_ = obj.yap_vec_; 
+		jaea2015_vec_ = obj.jaea2015_vec_; 
+
     }
 
     virtual ~PixTreeEvent() {}
@@ -163,15 +203,16 @@ public:
         externalTS2 = 0;
         eventNum = 0;
         fileName = "";
-        clover_vec_.clear();
-        doublebeta_vec_.clear();
+		//        clover_vec_.clear();
+		//        doublebeta_vec_.clear();
         gamma_scint_vec_.clear();
         logic_vec_.clear();
-        pspmt_vec_.clear();
-        root_dev_vec_.clear();
-        vandle_vec_.clear();
+		//        pspmt_vec_.clear();
+		//        root_dev_vec_.clear();
+		//        vandle_vec_.clear();
 		// by YX; 06/05/2019
 		yap_vec_.clear(); 
+		jaea2015_vec_.clear(); 
     }
 
     /* data structures to be filled in the ROOT TTree */
@@ -179,15 +220,16 @@ public:
     ULong64_t externalTS2 = 0;
     Double_t eventNum = 0;
     std::string fileName = "";
-    std::vector<processor_struct::CLOVERS> clover_vec_;
-    std::vector<processor_struct::DOUBLEBETA> doublebeta_vec_;
+	//    std::vector<processor_struct::CLOVERS> clover_vec_;
+	//    std::vector<processor_struct::DOUBLEBETA> doublebeta_vec_;
     std::vector<processor_struct::GAMMASCINT> gamma_scint_vec_;
     std::vector<processor_struct::LOGIC> logic_vec_;
-    std::vector<processor_struct::PSPMT> pspmt_vec_;
-    std::vector<processor_struct::ROOTDEV> root_dev_vec_;
-    std::vector<processor_struct::VANDLES> vandle_vec_;
+	//    std::vector<processor_struct::PSPMT> pspmt_vec_;
+	//    std::vector<processor_struct::ROOTDEV> root_dev_vec_;
+	//    std::vector<processor_struct::VANDLES> vandle_vec_;
 	// by YX; 06/05/2019
 	std::vector<processor_struct::YAP> yap_vec_; 
+	std::vector<processor_struct::JAEA2015> jaea2015_vec_; 
 
     ClassDef(PixTreeEvent, 1)
 };
